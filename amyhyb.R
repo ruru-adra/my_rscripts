@@ -395,3 +395,6 @@ shatter <- shatter %>%
 
 sum_qSAC3<- sqldf("select count(snpID) as countSNP,  R498_ID, geneDesc
                from ann_qSAC3 group by R498_ID")
+
+a<- a %>% 
+  mutate(across(everything(), as.character))#all as.character
