@@ -398,3 +398,9 @@ sum_qSAC3<- sqldf("select count(snpID) as countSNP,  R498_ID, geneDesc
 
 a<- a %>% 
   mutate(across(everything(), as.character))#all as.character
+
+
+#nest & paste
+k<- kegg_ceri %>%
+  group_by(geneID) %>%
+  summarise(Pathway.ID=paste(Pathway.ID, collapse = ";")) 
