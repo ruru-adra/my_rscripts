@@ -13,3 +13,24 @@ cal_z_score <- function(x){
 a2 <- t(apply(a, 1, cal_z_score))
 pheatmap(a)
 
+#ggplot
+
+#plotting GO (dot plot)
+library(ggplot2)
+
+ggplot(pvalue_fltr) +
+  geom_point(aes(x= p.value, y= description, color= description))
+
+#plotting GO (barplot)
+ggplot(topgo, aes(x=description, y=p.value)) + 
+  geom_bar(stat = "identity") +
+  coord_flip()
+
+#plotting barplot
+pvalue_fltr %>%
+  mutate(name = fct_reorder(description, p.value)) %>%
+  ggplot( aes(x=description, y=p.value)) +
+  geom_bar(stat="identity", fill="#f68060", alpha=.6, width=.4) +
+  coord_flip() +
+  xlab("") +
+  theme_bw()
