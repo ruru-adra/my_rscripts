@@ -13,7 +13,7 @@ cal_z_score <- function(x){
 a2 <- t(apply(a, 1, cal_z_score))
 pheatmap(a)
 
-#ggplot
+#ggplot (https://www.r-graph-gallery.com/index.html)
 
 #plotting GO (dot plot)
 library(ggplot2)
