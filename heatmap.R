@@ -34,3 +34,7 @@ pvalue_fltr %>%
   coord_flip() +
   xlab("") +
   theme_bw()
+
+#cloudword
+library(wordcloud2)
+wordcloud2(pvalue_fltr, color = "random-light", backgroundColor = "grey")
