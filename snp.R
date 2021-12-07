@@ -1,13 +1,9 @@
 #sequenom conversion
 s3<- s3 %>% mutate(across(everything(), as.character)) #change to char
-
 s3<- unique(s3) # remove dup
-
 s3$alel[s3$alel==''] <- NA #replace missing value with NA
-
 s3$alel[is.na(s3$alel)]<- "NC" #replace NA with string value
-
-n2<- n %>% #convert long to wider
+a<- s3 %>% #convert long to wider
   pivot_wider(names_from = sampleID, values_from = alel) %>% 
   unnest(cols = everything() )
 
