@@ -1,7 +1,7 @@
 library(pheatmap)
 library(tibble)
 
-a<- a %>% column_to_rownames("geneID")
+a<- a %>% column_to_rownames("geneID") 
 a<- as.matrix(a)
 
 #z-score function
@@ -38,3 +38,6 @@ pvalue_fltr %>%
 #cloudword
 library(wordcloud2)
 wordcloud2(pvalue_fltr, color = "random-light", backgroundColor = "grey")
+
+###data <- data %>%
+  rownames_to_column(var="the name you want")
