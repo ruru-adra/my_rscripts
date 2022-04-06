@@ -1,3 +1,9 @@
+#PASTE MULTIPLE ROWS IN SINGLE ROWS
+a<- main_matches %>% 
+    group_by(winner) %>% 
+    summarise(years = paste(year, collapse=", "))
+
+
 library(tidyr)
 library(dplyr)
 library(stringi)
