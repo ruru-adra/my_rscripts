@@ -1,3 +1,7 @@
+#split by char pos and extract
+mp$a<- substr(mp$new, 9, nchar(mp$new))
+
+
 #PASTE MULTIPLE ROWS IN SINGLE ROWS
 a<- main_matches %>% 
     group_by(winner) %>% 
