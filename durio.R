@@ -243,3 +243,7 @@ a<- fltr_react %>%
   mutate(seq= strsplit(as.character(seq), ";")) %>%
   unnest(seq)
 
+https://www.markhneedham.com/blog/2015/06/27/r-dplyr-squashing-multiple-rows-per-group-into-one/
+
+a<- av_all %>% 
+    group_by(OsID) %>% summarise(description = paste(description, collapse="|"))
