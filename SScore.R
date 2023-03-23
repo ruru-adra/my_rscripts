@@ -47,3 +47,5 @@ top_hub_ann<- top_hub_ann %>%
 "gene1579",
 "gene5057",
 "gene2000"))
+
+b<- a %>% pivot_longer(cols= -LocID, names_to="SRA", values_to="FPKM")
