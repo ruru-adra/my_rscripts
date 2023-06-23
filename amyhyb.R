@@ -1,3 +1,7 @@
+mcl dr_pcc2mcl.txt -l 1.1 --abc -o dr_out11.txt
+mcl ripe_pcc2mcl.txt -l 1.1 --abc -o ripe_out11.txt
+
+
 #split by char pos and extract
 mp$a<- substr(mp$new, 9, nchar(mp$new))
 
