@@ -1,5 +1,5 @@
-mcl dr_pcc2mcl.txt -l 1.1 --abc -o dr_out11.txt
-mcl ripe_pcc2mcl.txt -l 1.1 --abc -o ripe_out11.txt
+mcl dr_pcc2mcl.txt -i 1.1 --abc -o dr_out11.txt
+mcl ripe_pcc2mcl.txt -i 1.1 --abc -o ripe_out11.txt
 
 
 #split by char pos and extract
