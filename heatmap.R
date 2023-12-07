@@ -1,3 +1,41 @@
+library(wordcloud)
+library(dplyr)
+
+#replace sentence in a row
+pathway_counts$Pathway <- gsub('HSFA7/ HSFA6B-regulatory network-induced by drought and ABA. ', 
+                             'Regulatory network-induced by drought and ABA. ', pathway_counts$Pathway)
+
+# Data processing: Count the number of unique genes per pathway
+pathway_counts <- ann_top_blast %>%
+  group_by(Pathway) %>%
+  summarise(GeneCount = n_distinct(OsID))
+
+# Creating the word cloud
+color_palette <- c("blue", "olivedrab")
+
+png("wordcloud.png", width = 100, height = 200)
+wordcloud(words = sum_cgene$chr, freq = sum_cgene$count_gene_per_chr, 
+          min.freq = 1, random.order = FALSE, rot.per = 0.1, 
+          colors = color_palette)
+dev.off()
+
+sum_cgene$chr <- factor(sum_cgene$chr, levels = sort(unique(sum_cgene$chr))) #sort value
+
+ggplot(sum_cgene, aes(x=chr, y=count_gene_per_chr)) +
+  geom_segment(aes(x=chr, xend=chr, y=0, yend=count_gene_per_chr), color="skyblue") +
+  geom_point(color="blue", size=4, alpha=0.6) +
+  theme_light() +
+  coord_flip() +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.border = element_blank(),
+    axis.ticks.y = element_blank()
+  )
+
+
+
+***************************
+
 library(pheatmap)
 library(tibble)
 
