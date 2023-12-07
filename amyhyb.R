@@ -1,3 +1,17 @@
+##merged multiple data frames
+# Example Data Frames
+df1 <- data.frame(GeneID = c("Gene1", "Gene2", "Gene3"), Expr1 = rnorm(3))
+df2 <- data.frame(GeneID = c("Gene1", "Gene2", "Gene4"), Expr2 = rnorm(3))
+df3 <- data.frame(GeneID = c("Gene1", "Gene3", "Gene5"), Expr3 = rnorm(3))
+
+# Merging multiple data frames
+list_of_dfs <- list(df1, df2, df3)  # List of data frames
+
+merged_df <- Reduce(function(x, y) merge(x, y, by = "GeneID", all = TRUE), list_of_dfs)
+
+******                    *****
+
+
 mcl dr_pcc2mcl.txt -i 1.1 --abc -o dr_out11.txt
 mcl ripe_pcc2mcl.txt -i 1.1 --abc -o ripe_out11.txt
 
