@@ -93,6 +93,14 @@ b<- py_alel %>% #pivot to get py allele in single row
   pivot_wider(names_from = alel, values_from=alel)
 b$alel<- paste(b$G, b$A, b$T, b$C, sep="/")
 
+wx.geno.long<- wx.geno2fj %>% 
+pivot_longer(cols = MRM16:KEDINGA,
+               names_to = "var", 
+               values_to = "allele")
+
+wx.geno.wide<- wx.geno.long %>% 
+pivot_wider(names_from = rs, values_from=allele)
+
 
 #annotation
 genic<- filter(fltr_ann, snp_effect %in% c("missense_variant", "synonymous_variant",
