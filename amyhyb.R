@@ -1,3 +1,22 @@
+# Define the file name for FASTA output
+fasta_file <- "output.fasta"
+
+#
+writeLines(
+  paste0(">", seq$seqID, "\n", seq$fasta),
+  con = fasta_file
+)
+
+********
+
+#bring rownames to header
+colnames(aroma.var.snp) <- as.character(unlist(aroma.var.snp[1, ]))
+aroma.var.snp <- aroma.var.snp[-1, ]
+
+
+*************
+
+
 ##merged multiple data frames
 # Example Data Frames
 df1 <- data.frame(GeneID = c("Gene1", "Gene2", "Gene3"), Expr1 = rnorm(3))
