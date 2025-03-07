@@ -459,3 +459,24 @@ a<- a %>%
 k<- kegg_ceri %>%
   group_by(geneID) %>%
   summarise(Pathway.ID=paste(Pathway.ID, collapse = ";")) 
+
+                    a<- snp_ann %>%
+  filter(Consequence %in% c("missense_variant", "synonymous_variant",
+                            "intergenic_variant", "3_prime_UTR_variant", 
+                            "5_prime_UTR_variant", "intron_variant"))
+
+a<- goat_snp %>% 
+  pivot_wider(names_from=Trait, values_from=logP)
+
+CMplot(gwas, plot.type="m", col="grey", LOG10=FALSE,
+       multraits=TRUE,threshold=1.30103,
+       signal.col=c("red","green","blue", "orange", "pink"),
+       threshold.lty=1, 
+       threshold.lwd=c(1,1), threshold.col=c("black","grey"),amplify=TRUE,
+       signal.cex=1, 
+       file="jpg",file.name="",dpi=300,file.output=TRUE,verbose=TRUE,
+       points.alpha=225,legend.ncol=3, legend.pos="middle")
+
+
+
+                    
