@@ -1,3 +1,21 @@
+#from wide geno by breed to long geno
+a<- hapmap_5breeds %>% 
+pivot_longer(cols = BRAHMAN:KKE,
+               names_to = "var", 
+               values_to = "allele")
+
+#summarize allele per snp
+a2<- a %>%
+  group_by(snpID) %>%
+  summarise(allele=paste(allele, collapse = "/"))
+
+#summarize allele per snp using data.table
+dt[, simplified_allele := {
+alleles<- tstrsplit(allele, "/", fixed = TRUE)
+bases<- unique(unlist(strsplit(unlist(alleles), "")))
+paste0(sort(bases), collapse = "/")
+}, by = 1:nrow(dt)]
+
 library(dplyr)
 library(tidyr)
 library(tidyverse)
