@@ -1,3 +1,7 @@
+./snphylo.sh -H /home/biotech/Desktop/snp_indel/snphylo/zebu_5breeds_to_tree.txt -A -t 10
+
+
+
 #from wide geno by breed to long geno
 a<- hapmap_5breeds %>% 
 pivot_longer(cols = BRAHMAN:KKE,
