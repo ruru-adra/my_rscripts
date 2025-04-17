@@ -1,6 +1,13 @@
 ./snphylo.sh -H /home/biotech/Desktop/snp_indel/snphylo/zebu_5breeds_to_tree.txt -A -t 10
 
+# Select the genotype columns (assuming columns 4 onward)
+geno_cols <- names(dt)[4:ncol(dt)]
 
+dt[, simplified_allele := apply(.SD, 1, function(x) {
+  paste0(sort(unique(x)), collapse = "/")
+}), .SDcols = geno_cols]
+
+setorder(m, chr, pos)
 
 #from wide geno by breed to long geno
 a<- hapmap_5breeds %>% 
